@@ -1,0 +1,76 @@
+# This is a sample menu.lst file. You should make some changes to it.
+timeout 15
+default 0
+
+font /boot/fonts/unifont.hex
+gfxmenu /boot/Elisha2.gz
+graphicsmode 0x121
+splashimage /boot/Zver.xpm.gz
+
+title runtu-xfce-12.04_201303.iso
+partnew (%@root:~1,3%,3) 0x00 /_iso/runtu-xfce-12.04_201303.iso
+map /_iso/runtu-xfce-12.04_201303.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+title xubuntu-16.04.6-desktop-amd64
+partnew (%@root:~1,3%,3) 0x00 /_iso/xubuntu-16.04.6-desktop-amd64.iso
+map /_iso/xubuntu-16.04.6-desktop-amd64.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+
+title xubuntu-16.04.6-desktop-amd64.iso  Load LiveCD
+map /_iso/xubuntu-16.04.6-desktop-amd64.iso (hd32)
+map --hook
+root (hd32)
+kernel /casper/vmlinuz boot=casper debian-installer/language=ru keyboard-configuration/layoutcode?=ru iso-scan/filename=/_iso/xubuntu-16.04.6-desktop-amd64.iso
+initrd /casper/initrd
+boot
+
+title Проверка оперативной памяти memtest86
+map /_iso/memtest86+-5.01.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+title Проверка жесткого диска victoria3.5
+map /_iso/vcr35r.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+title Boot from HDD-1
+chainloader (hd0,0)+1
+rootnoverify(hd0,0)
+
+title Start Windows XP from Hdd 0 Part 0
+root (hd0,0)
+rootnoverify (hd0)
+root (hd0,0)
+chainloader (hd0,0)/ntldr
+
+title Start Vista Load bootmgr From HD-0 Part-0
+root (hd0,0)
+chainloader (hd0,0)/bootmgr
+
+title boot from cd-rom
+cdrom --init
+map --hook
+chainloader (cd0)
+
+title commandline
+savedefault --wait=2
+commandline
+
+title Reboot
+reboot
+
+title ShutDown PC
+halt
