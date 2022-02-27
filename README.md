@@ -1,5 +1,6 @@
 # multiboot USB
 Файл в папке /image/usb.img - это образ флешки. Этот образ нужно залит утилитой dd
+
 ###Комманда:
             sudo dd if=/путь_до/usb.img of=/dev/sdf bs=1b count=40000 status=progress
 
@@ -12,4 +13,3 @@
 У меня было добавлено два образа рунту - runtu-xfce-12.04_201303.iso и хубунту - xubuntu-16.04.6-desktop-amd64.iso
 
 После этого останется только подправить файл menu.lst
-
